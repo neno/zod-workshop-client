@@ -11,7 +11,11 @@ type EditMovieFormProps = {
   onSubmit: () => void;
 };
 
-export const EditMovieForm = ({ movie, onCancel, onSubmit }: EditMovieFormProps) => {
+export const EditMovieForm = ({
+  movie,
+  onCancel,
+  onSubmit,
+}: EditMovieFormProps) => {
   const { updateMovie } = useMoviesStore();
 
   const methods = useForm({
@@ -27,30 +31,42 @@ export const EditMovieForm = ({ movie, onCancel, onSubmit }: EditMovieFormProps)
   return (
     <FormProvider {...methods}>
       <form
-        className='card-body text-sm'
+        className='card-body text-sm h-full'
         noValidate
         onSubmit={methods.handleSubmit(submit)}
       >
-        <fieldset className='w-full'>
-          <legend className='sr-only'>Edit Movie Details</legend>
-          <ol className='flex flex-col gap-2 w-full'>
-            <li>
-              <TextField label='Title' name='title' />
-            </li>
-            <li>
-              <TextField label='Release Date' type='date' name='release_date' />
-            </li>
-            <li>
-              <TextField multiline label='Overview' name='overview' />
-            </li>
-          </ol>
-          <div className='flex justify-between gap-2 mt-4'>
+        <div className='w-full h-full flex flex-col gap-2'>
+          <fieldset>
+            <legend className='sr-only'>Edit Movie Details</legend>
+            <ol className='flex flex-col gap-2 w-full'>
+              <li>
+                <ol className='grid grid-cols-2 gap-2'>
+                  <li>
+                    <TextField label='Title' name='title' />
+                  </li>
+                  <li>
+                    <TextField
+                      label='Release Date'
+                      type='date'
+                      name='release_date'
+                    />
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <TextField multiline label='Overview' name='overview' />
+              </li>
+            </ol>
+          </fieldset>
+          <div className='flex justify-between gap-2 mt-auto flex-grow-1'>
             <Button type='submit' mode='tertiary'>
               Update
             </Button>
-            <Button mode="danger" onClick={onCancel}>Cancel</Button>
+            <Button mode='danger' onClick={onCancel}>
+              Cancel
+            </Button>
           </div>
-        </fieldset>
+        </div>
       </form>
     </FormProvider>
   );

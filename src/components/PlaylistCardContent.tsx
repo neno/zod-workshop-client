@@ -32,8 +32,8 @@ export const PlaylistCardContent = ({ movie, onEdit }: PlaylistCardProps) => {
         <h2 className='card-title'>{title}</h2>
 
         <small>{release_date}</small>
-        <p>{overview}</p>
-        <div className='card-actions justify-end'>
+        <p className='line-clamp-4 overflow-hidden flex-grow-0'>{overview}</p>
+        <div className='card-actions justify-end mt-auto'>
           <Button onClick={onEdit} title='Edit Movie' mode='tertiary'>
             <IconPencil />
           </Button>
