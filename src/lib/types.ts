@@ -6,11 +6,12 @@ export const movieSchema = z.object({
   poster_path: z.string().nullable(),
   release_date: z.string().nullable(),
   overview: z.string().nullable(),
+  key: z.string().nonempty(),
 });
 
 export type MovieType = z.infer<typeof movieSchema>;
 
-export type NewMovieType = Omit<MovieType, 'id'>;
+export type NewMovieType = Omit<MovieType, 'id' | 'key'>;
 
 export const tmdbMovieItemSchema = z.object({
   id: z.number(),
@@ -42,12 +43,9 @@ export const tmdbSearchResultSchema = z.object({
 
 export type TmdbSearchResultsType = z.infer<typeof tmdbSearchResultSchema>
 
-type ErrorName = 
-| 'SearchError'
-| 'SearchValidationError'
-| 'CreateMovieError'
-| 'CreateMovieValidationError'
-| 'CreateMovieValidationError'
+
 
 
 export type SearchErrorName = 'SearchFetchingError' | 'SearchValidationError';
+export type PlaylistErrorName = 'DuplicateMovieError';
+

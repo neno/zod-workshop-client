@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { SearchErrorName } from './types';
+import { PlaylistErrorName, SearchErrorName } from './types';
 
 export class ErrorBase<T extends string> extends Error {
   name: T;
@@ -28,3 +28,4 @@ export class ErrorBase<T extends string> extends Error {
 }
 
 export class SearchError extends ErrorBase<SearchErrorName> {}
+export class PlaylistError extends ErrorBase<PlaylistErrorName> {}

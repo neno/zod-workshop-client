@@ -21,14 +21,14 @@ export const Search = () => {
   // }
 
   return (
-    <div>
-      <h1>Search Movies</h1>
+    <section>
+      <h2>Search Movies</h2>
       <p>Search movies and add them to your playlist</p>
 
       <Stack>
         <SearchForm onSubmit={setSearchTerm} isLoading={isLoading} />
         {!!items && items.length > 0 && <SearchResults items={items} />}
       </Stack>
-    </div>
+    </section>
   );
 };
