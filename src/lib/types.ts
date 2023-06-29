@@ -43,9 +43,5 @@ export const tmdbSearchResultSchema = z.object({
 
 export type TmdbSearchResultsType = z.infer<typeof tmdbSearchResultSchema>
 
-
-
-
 export type SearchErrorName = 'SearchFetchingError' | 'SearchValidationError';
-export type PlaylistErrorName = 'DuplicateMovieError';
-
+export type PlaylistErrorName = 'DuplicateMovieError' | 'MovieValidationError';

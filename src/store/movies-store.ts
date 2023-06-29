@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
-import { MovieType, NewMovieType } from '../lib/types';
+import { MovieType, NewMovieType, movieSchema } from '../lib/types';
 import { PlaylistError } from '../lib/exceptions';
 
 const preventDuplicate = (movies: MovieType[], data: NewMovieType) => {
@@ -15,7 +15,20 @@ const preventDuplicate = (movies: MovieType[], data: NewMovieType) => {
   return false;
 };
 
+const validateMovie = (data: NewMovieType | MovieType) => {
+  try {
+    movieSchema.omit({ id: true, key: true }).parse(data);
+  } catch (error) {
+    throw new PlaylistError({
+      name: 'MovieValidationError',
+      message: 'Movie validation failed',
+      cause: error
+    })
+  }
+}
+
 const addMovie = (movies: MovieType[], data: NewMovieType) => {
+  validateMovie(data);
   preventDuplicate(movies, data);  
 
   return [
@@ -28,9 +41,13 @@ const addMovie = (movies: MovieType[], data: NewMovieType) => {
   ]
 };
 
-const updateMovie = (movies: MovieType[], data: MovieType) => (
-  movies.map((movie) => (movie.id === data.id ? { ...movie, ...data } : movie))
-);
+const updateMovie = (movies: MovieType[], data: MovieType) => {
+  validateMovie(data);
+
+  return (
+    movies.map((movie) => (movie.id === data.id ? { ...movie, ...data } : movie))
+  )
+};
 
 const deleteMovie = (movies: MovieType[], id: string) => movies.filter((movie) => movie.id !== id);
 
