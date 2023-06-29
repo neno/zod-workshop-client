@@ -8,9 +8,10 @@ import { Button } from '../../components/Button';
 type EditMovieFormProps = {
   movie: MovieType;
   onCancel: () => void;
+  onSubmit: () => void;
 };
 
-export const EditMovieForm = ({ movie, onCancel }: EditMovieFormProps) => {
+export const EditMovieForm = ({ movie, onCancel, onSubmit }: EditMovieFormProps) => {
   const { updateMovie } = useMoviesStore();
 
   const methods = useForm({
@@ -20,20 +21,21 @@ export const EditMovieForm = ({ movie, onCancel }: EditMovieFormProps) => {
 
   const submit = (data: MovieType) => {
     updateMovie(data);
+    onSubmit();
   };
 
   return (
     <FormProvider {...methods}>
       <form
-        className='block w-full bg-base-300 text-sm p-2'
+        className='card-body text-sm'
         noValidate
         onSubmit={methods.handleSubmit(submit)}
       >
         <fieldset className='w-full'>
           <legend className='sr-only'>Edit Movie Details</legend>
-          <ol className='flex flex-col gap-0 w-full'>
+          <ol className='flex flex-col gap-2 w-full'>
             <li>
-              <TextField label='title' name='title' />
+              <TextField label='Title' name='title' />
             </li>
             <li>
               <TextField label='Release Date' type='date' name='release_date' />
@@ -42,11 +44,11 @@ export const EditMovieForm = ({ movie, onCancel }: EditMovieFormProps) => {
               <TextField multiline label='Overview' name='overview' />
             </li>
           </ol>
-          <div className='flex justify-start gap-2 mt-4'>
-            <Button type='submit' mode='primary'>
+          <div className='flex justify-between gap-2 mt-4'>
+            <Button type='submit' mode='tertiary'>
               Update
             </Button>
-            <Button onClick={onCancel}>Cancel</Button>
+            <Button mode="danger" onClick={onCancel}>Cancel</Button>
           </div>
         </fieldset>
       </form>
