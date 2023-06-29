@@ -16,7 +16,7 @@ export const PlaylistCard = ({ movie }: PlaylistCardProps) => {
     <div
       className={twMerge(
         'card bg-base-300 max-h-[24rem]',
-        !isEditing && 'lg:card-side lg:grid lg:grid-cols-3'
+        !isEditing && 'card-side grid grid-cols-3'
       )}
     >
       {isEditing ? (
