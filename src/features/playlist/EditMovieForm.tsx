@@ -41,18 +41,6 @@ export const EditMovieForm = ({
             <ol className='flex flex-col gap-2 w-full @container'>
               <li>
                 <TextField label='Title' name='title' />
-                {/* <ol className='grid min-[500px]:grid-cols-2 gap-2'>
-                  <li>
-                    <TextField label='Title' name='title' />
-                  </li>
-                  <li>
-                    <TextField
-                      label='Release Date'
-                      type='date'
-                      name='release_date'
-                    />
-                  </li>
-                </ol> */}
               </li>
               <li>
                 <TextField multiline label='Overview' name='overview' />
