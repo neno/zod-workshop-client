@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='App'>
       <div className='container mx-auto'>
-        <Stack className='min-h-[100vh] justify-between'>
+        <Stack className='min-h-[100dvh] justify-between'>
           <div className='flex-none tabs tabs-boxed flex items-center justify-between p-4 mt-8'>
             <header className='flex gap-2'>
               <button
@@ -45,9 +45,9 @@ function App() {
             )}
           </main>
           <footer className='flex-none tabs tabs-boxed p-4 mb-8'>
-            <p className='flex items-center gap-2'>
-              <strong>©TheTeam</strong> -{' '}
-              <small>This is the showcase App for Zod Workshop</small>
+            <p className='w-full flex items-center justify-between gap-2'>
+              <strong>© TheTeam 2023</strong>
+              <small>This is a showcase App for the Zod Workshop</small>
             </p>
           </footer>
         </Stack>
