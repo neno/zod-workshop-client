@@ -28,7 +28,7 @@ export const PlaylistCardContent = ({ movie, onEdit }: PlaylistCardProps) => {
           />
         )}
       </figure>
-      <div className='card-body lg:col-span-2'>
+      <div className='card-body col-span-2'>
         <h2 className='card-title'>{title}</h2>
 
         <small>{release_date}</small>

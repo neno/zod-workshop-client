@@ -38,9 +38,9 @@ export const EditMovieForm = ({
         <div className='w-full h-full flex flex-col gap-2'>
           <fieldset>
             <legend className='sr-only'>Edit Movie Details</legend>
-            <ol className='flex flex-col gap-2 w-full'>
+            <ol className='flex flex-col gap-2 w-full @container'>
               <li>
-                <ol className='grid grid-cols-2 gap-2'>
+                <ol className='grid min-[500px]:grid-cols-2 gap-2'>
                   <li>
                     <TextField label='Title' name='title' />
                   </li>
