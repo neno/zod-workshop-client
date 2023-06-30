@@ -40,7 +40,8 @@ export const EditMovieForm = ({
             <legend className='sr-only'>Edit Movie Details</legend>
             <ol className='flex flex-col gap-2 w-full @container'>
               <li>
-                <ol className='grid min-[500px]:grid-cols-2 gap-2'>
+                <TextField label='Title' name='title' />
+                {/* <ol className='grid min-[500px]:grid-cols-2 gap-2'>
                   <li>
                     <TextField label='Title' name='title' />
                   </li>
@@ -51,7 +52,7 @@ export const EditMovieForm = ({
                       name='release_date'
                     />
                   </li>
-                </ol>
+                </ol> */}
               </li>
               <li>
                 <TextField multiline label='Overview' name='overview' />

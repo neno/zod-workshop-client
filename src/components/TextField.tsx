@@ -25,13 +25,14 @@ export const TextField: FC<FieldProps> = ({
 
   return (
     <div className='form-control w-full'>
-      <label htmlFor={name} className='label'>
+      <label htmlFor={name} className='label flex items-center gap-2'>
         <span className='label-text'>{label}</span>
+        {error && <span className='text-sm text-error'>{error.message}</span>}
       </label>
       {multiline ? (
         <textarea
           id={name}
-          rows={4}
+          rows={3}
           className='textarea textarea-bordered'
           {...register(name, {
             required,
@@ -48,7 +49,6 @@ export const TextField: FC<FieldProps> = ({
           })}
         />
       )}
-      {error && <p className='text-sm text-error my-2'>{error.message}</p>}
     </div>
   );
 };

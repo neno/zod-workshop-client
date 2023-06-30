@@ -16,20 +16,23 @@ export const Search = () => {
     shouldRetryOnError: false,
   });
 
-  // if (error) {
-  //   toast.error('Something went wrong');
-  // }
-
   return (
     <section>
-      <h2 className="text-3xl font-bold">Search Movies</h2>
-      <p>Search movies and add them to your playlist</p>
-
-      <Stack className="mt-8">
+      <h2 className='text-3xl font-bold'>Search Movies</h2>
+      <Stack className='mt-8'>
         <SearchForm onSubmit={setSearchTerm} isLoading={isLoading} />
-        {isLoading ? <span className="loading loading-spinner loading-lg"></span> :
-        !!items && items.length > 0 ? <SearchResults items={items} />
-          : searchTerm ? <p>Sorry, no movies were found matching your search term '<span className="text-primary">{searchTerm}</span>'.</p> : <p>Please enter a search term to find your desired movies.</p>}
+        {isLoading ? (
+          <span className='loading loading-spinner loading-lg'></span>
+        ) : !!items && items.length > 0 ? (
+          <SearchResults items={items} />
+        ) : searchTerm ? (
+          <p>
+            Sorry, no movies were found matching your search term '
+            <span className='text-primary'>{searchTerm}</span>'.
+          </p>
+        ) : (
+          <p>Search movies and add them to your playlist</p>
+        )}
       </Stack>
     </section>
   );

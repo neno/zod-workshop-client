@@ -18,7 +18,7 @@ export const SearchResults = ({ items }: SearchResultsProps) => {
         items.length > 0 &&
         items.map((movie) => (
           <MovieCard key={JSON.stringify(movie)} movie={movie}>
-            <Button onClick={() => addMovie(movie)} title='Add to Playlist'>
+            <Button onClick={() => addMovie(movie)} title={`Add to Playlist`}>
               <IconPlus />
             </Button>
           </MovieCard>

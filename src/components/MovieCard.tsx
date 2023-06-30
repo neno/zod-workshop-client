@@ -26,7 +26,7 @@ export const MovieCard = ({ movie, children }: MovieCardProps) => {
       ) : (
         <h3 className='p-4 m-0 text-primary'>{title}</h3>
       )}
-      <div className='w-full absolute bottom-0 right-0 flex justify-between items-center'>
+      <div className='w-full absolute bottom-0 right-0 flex justify-between items-center p-2'>
         {children}
       </div>
     </div>

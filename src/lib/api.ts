@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { NewMovieType, TmdbMovieItemType, tmdbSearchResultSchema } from './types';
 import { SearchError } from './exceptions';
+import { toast } from 'react-toastify';
 
 export async function searchMovies(searchTerm: string): Promise<NewMovieType[]> {
   try {

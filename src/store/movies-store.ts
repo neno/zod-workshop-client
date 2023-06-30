@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
 import { MovieType, NewMovieType, movieSchema } from '../lib/types';
 import { PlaylistError } from '../lib/exceptions';
+import { toast } from 'react-toastify';
 
 const preventDuplicate = (movies: MovieType[], data: NewMovieType) => {
   if (movies.some((movie) => movie.key === JSON.stringify(data))) {
@@ -29,8 +30,9 @@ const validateMovie = (data: NewMovieType | MovieType) => {
 
 const addMovie = (movies: MovieType[], data: NewMovieType) => {
   validateMovie(data);
-  preventDuplicate(movies, data);  
+  preventDuplicate(movies, data);
 
+  toast.success('Movie added to the playlist');
   return [
     ...movies,
     {
@@ -44,12 +46,16 @@ const addMovie = (movies: MovieType[], data: NewMovieType) => {
 const updateMovie = (movies: MovieType[], data: MovieType) => {
   validateMovie(data);
 
+  toast.success('Movie was successully updated');
   return (
     movies.map((movie) => (movie.id === data.id ? { ...movie, ...data } : movie))
   )
 };
 
-const deleteMovie = (movies: MovieType[], id: string) => movies.filter((movie) => movie.id !== id);
+const deleteMovie = (movies: MovieType[], id: string) => {
+  toast.success('Movie was deleted from the playlist');
+  return (movies.filter((movie) => movie.id !== id))
+};
 
 type Store = {
   movies: MovieType[];

@@ -18,13 +18,12 @@ export const Button: FC<IButtonProps> = ({
   title,
 }) => {
   const styles = clsxm(
-    'inline-block relative px-4 py-2 font-medium text-black bg-white',
+    `btn inline-block relative px-4 py-2 font-medium text-black bg-white ${className}`,
     {
       'bg-primary text-white': mode === 'primary',
       'bg-secondary text-white': mode === 'secondary',
       'bg-accent text-white': mode === 'tertiary',
       'bg-error text-white': mode === 'danger',
-      className,
     }
   );
 
